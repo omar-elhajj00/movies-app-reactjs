@@ -17,14 +17,16 @@ const App = () => {
         const data = await response.json();
 
         setMovies(data.Search);
+        console.log(movies);
         console.log(movies[0]);
         
     } 
+
     
         
     //we want to fetsh the data from this api as soon as our component loads, so we need to use useEffect
     useEffect(()=> {
-        searchMovies("shark");
+        searchMovies("spiderman");
     },[]);
 
     return (
@@ -43,9 +45,22 @@ const App = () => {
                  />
             </div>
 
-            <div className="container">
-              {/* <MovieCard movie={movies[0]}/> */}
-            </div>
+            {
+                movies?.length>0
+                ? (
+                    <div className="container">
+                        {movies.map((movie)=> 
+                        <MovieCard movie={movie}/>
+                        )}
+                    </div>
+                ) : 
+                (
+                    <div className='empty'> 
+                        <h2>No movies found</h2>
+                    </div>
+                )
+            }
+            
 
         </div>
     );
