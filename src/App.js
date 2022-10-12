@@ -27,7 +27,7 @@ const App = () => {
         
     //we want to fetsh the data from this api as soon as our component loads, so we need to use useEffect
     useEffect(()=> {
-        searchMovies("superman");
+        searchMovies("");
     },[]);
 
     return (
@@ -42,7 +42,7 @@ const App = () => {
                 <img 
                  src={SearchIcon}
                  alt="search"
-                 onClick={() =>{}}
+                 onClick={() =>{searchMovies(searchTerm)}}
                  />
             </div>
 
