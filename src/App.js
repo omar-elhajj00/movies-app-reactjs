@@ -8,9 +8,10 @@ import MovieCard from "./MovieCard";
 const API_URL='http://www.omdbapi.com?apikey=58d398b1';
 
 const App = () => {
-    //state
+    //movies state 
     const [movies, setMovies] = useState([]); 
-
+    //search state
+    const [searchTerm , setSearchTerm] = useState('');
 
     const searchMovies = async(title) => { //async stands for asynchronous data which means that it takes time to fetch these movies 
         const response = await fetch (`${API_URL}&s=${title}`);
@@ -26,7 +27,7 @@ const App = () => {
         
     //we want to fetsh the data from this api as soon as our component loads, so we need to use useEffect
     useEffect(()=> {
-        searchMovies("spiderman");
+        searchMovies("superman");
     },[]);
 
     return (
@@ -35,8 +36,8 @@ const App = () => {
             <div className="search">
                 <input
                  placeholder="Search for movies"
-                 value="Superman"
-                 onChange={()=>{}}
+                 value={searchTerm}
+                 onChange={(e)=>setSearchTerm(e.target.value)}
                 />
                 <img 
                  src={SearchIcon}
