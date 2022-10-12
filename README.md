@@ -1,1 +1,1 @@
-# react-practice
+# movies-app-react
